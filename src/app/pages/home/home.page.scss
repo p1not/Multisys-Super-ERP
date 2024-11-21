@@ -1,0 +1,14 @@
+.circular-img {
+  max-width: 50vh;
+  max-height: 50vh;
+  border-radius: 35%;
+  overflow: hidden;
+}
+
+.stretch-card {
+  justify-content: center; /* Centraliza o conteúdo verticalmente dentro do card */
+}
+
+ion-card {
+  place-items: center;
+}

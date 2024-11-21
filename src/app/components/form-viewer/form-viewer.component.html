@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ formTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding centralize-content" [fullscreen]="true">  
+  <ion-card class="stretch-card">
+    <ion-card-header> 
+      <ion-card-title style="text-align: center; font-size: x-large;">{{ formTitle }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="stretch-card">   
+      <ion-card-subtitle>Atenção: Os campos marcados com * são obrigatórios.</ion-card-subtitle>  
+      <br>        
+
+      <form (ngSubmit)="onSubmit(form)" #form="ngForm" style="background-color: #8c8c8c09; border-radius: 0.5rem; padding: 1rem;">
+
+        <div *ngFor="let field of formFields" > <!-- Aqui adicionamos a verificação do 'hide' -->
+          <div *ngIf="!field.hide">
+            <!-- Campo de Texto -->
+            <mat-form-field *ngIf="field.type === 'text'" style="width: 100%;">
+              <ion-label>{{ field.customLabel || field.label }} {{ field.required ? '*' : '' }}</ion-label>
+              <ion-input [name]="field.name" [(ngModel)]="formData[field.name]" [required]="field.required"></ion-input>
+            </mat-form-field>
+
+            <!-- Campo de Textarea -->
+            <mat-form-field *ngIf="field.type === 'textarea'" style="width: 100%;">
+              <ion-label>{{ field.customLabel || field.label }} {{ field.required ? '*' : '' }}</ion-label>
+              <ion-textarea [name]="field.name" [(ngModel)]="formData[field.name]" [required]="field.required"></ion-textarea>
+            </mat-form-field>
+
+            <!-- Campos combinados em uma linha, ex: Level e Icon -->
+            <div style="display: flex;" *ngIf="field.type === 'group'">
+              <div style="flex: 1; padding-right: 0.5rem;">
+                <mat-form-field *ngIf="field.subfields[0].type === 'text'">
+                  <ion-label>{{ field.subfields[0].label }} {{ field.subfields[0].required ? '*' : '' }}</ion-label>
+                  <ion-input [name]="field.subfields[0].name" [(ngModel)]="formData[field.subfields[0].name]" [required]="field.subfields[0].required"></ion-input>
+                </mat-form-field>
+              </div>
+              <div style="flex: 1; padding-left: 0.5rem;">
+                <mat-form-field *ngIf="field.subfields[1].type === 'text'">
+                  <ion-label>{{ field.subfields[1].label }} {{ field.subfields[1].required ? '*' : '' }}</ion-label>
+                  <ion-input [name]="field.subfields[1].name" [(ngModel)]="formData[field.subfields[1].name]" [required]="field.subfields[1].required"></ion-input>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <!-- Botão de Submit -->
+        <ion-button expand="full" type="submit" [disabled]="form.invalid" class="ion-button-submit">Salvar</ion-button>
+
+      </form>
+    </ion-card-content>    
+  </ion-card>
+</ion-content>

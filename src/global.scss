@@ -1,0 +1,150 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+@import "@ionic/angular/css/palettes/dark.always.css";
+@import "@ionic/angular/css/palettes/dark.class.css";
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+
+.centralize-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // text-align: center;
+    min-height: 100vh;
+}
+
+ion-toolbar {
+    text-align: center;
+}
+
+ion-card {
+    padding: 0.5vh;
+    display: grid;
+    border-radius: 2vh;
+}
+
+.stretch-card {
+    flex-grow: 1; /* Faz o ion-card crescer para ocupar o espaço */
+    display: flex;
+    flex-direction: column;
+    // justify-content: center; /* Centraliza o conteúdo dentro do card */
+    // height: calc(100vh - 56px - 16px - 32px); /* 56px para o ion-header e 16px de padding e 32px para o ion-card */
+}
+
+ion-label {
+    font-weight: bold;
+    padding-right: 0.5rem;
+    font-weight: bold;
+}
+  
+$input-border-opacity: 0.3;
+
+ion-input,
+ion-textarea {
+    flex: 1;
+    background-color: #8c8c8c09;
+    border-radius: 0.5rem;
+}
+
+// ion-input {
+//     // border-bottom: 1px solid rgba(#ffeb3b9d, $input-border-opacity);
+//     background-color: #8c8c8c09;
+//     border-radius: 0.5rem;
+// }  
+
+// ion-textarea {
+//     // border-bottom: 1px solid rgba(#ffeb3b9d, $input-border-opacity);
+//     background-color: #8c8c8c09;
+//     border-radius: 0.5rem;
+// }
+
+
+
+.headerRow{
+    background-color: #8c8c8c2a;
+    border-radius: 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1; /* Mantém os cabeçalhos visíveis durante a rolagem */
+}
+
+.gridview {
+    display: flex;
+}
+
+@media (max-width: 933px) {
+    .gridview {
+        max-width: 37vh;
+    }   
+    
+    .ion-card{
+        align-items: center;
+        overflow-x: auto; /* Permite rolar horizontalmente */
+    }
+}
+
+ion-row {
+    border-radius: 0.5rem;
+    background-color: #8c8c8c09;   
+    border : 0.5px solid #8c8c8c09;
+}
+
+
+
+ion-button[type="submit"]::part(native) {
+    border-radius: 0.5rem; /* Define o border-radius apenas para o botão de submit */
+    margin-top: auto; /* Move o botão para o final */
+}
+
+
+
+ion-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  form ion-button[type="submit"] {
+    margin-top: auto; /* Move o botão para o final */
+  }

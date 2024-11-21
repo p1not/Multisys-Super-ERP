@@ -1,0 +1,29 @@
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); // Define 12 colunas como exemplo
+  grid-auto-rows: minmax(50px, auto); // Altura das linhas flexível
+  gap: 10px; // Espaço entre os campos
+}
+
+.centralize-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.stretch-card {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+ion-card-subtitle {
+  color: #8c8c8c;
+  font-size: small;
+  margin-bottom: 10px;
+}
+
+mat-form-field {
+  width: 100%;
+}

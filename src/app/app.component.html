@@ -1,0 +1,123 @@
+<ion-app>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button (click)="toggleMenu()"></ion-menu-button>
+        <!-- <ion-button>
+          <ion-icon name="bookmarks-outline"></ion-icon>
+        </ion-button> 
+        <ion-button>
+          <ion-icon name="wallet-outline"></ion-icon>
+        </ion-button>       
+        <ion-button>
+          <ion-icon name="person-circle-outline" style="font-size: 23px;"></ion-icon>
+        </ion-button> -->
+        <!-- <ion-button ion-button (click)="goBack()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button> -->
+      </ion-buttons>
+      <!-- <ion-input placeholder="Pesquisar..." class="search-input"></ion-input> -->
+      <ion-buttons slot="end">
+        <!-- <ion-button  ion-button (click)="goForward()">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-button > -->
+        <!-- <ion-button>
+          <ion-icon name="bag-handle-outline"></ion-icon>
+        </ion-button> -->
+        <!-- <ion-button>
+          <ion-icon name="settings-outline"></ion-icon>
+        </ion-button> -->
+        <ion-button>
+          <ion-icon name="log-out-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-split-pane contentId="main-content" when="false">
+    <ion-menu contentId="main-content" [hidden]="!isMenuOpen">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title></ion-title>
+        </ion-toolbar>
+      </ion-header> 
+      <ion-content>
+        <ion-list id="head-menu-list">
+          <ion-list-header>Rodrigo Alves</ion-list-header>
+          <ion-note>rodrigo&#64;ionicframework.com</ion-note>
+        </ion-list>
+        
+        <ion-list *ngFor="let menu of menus" style="flex-direction: column;" id="inbox-list">
+          <ion-item lines="none" routerDirection="root" (click)="menu.tem_submenus===1 ? toggleExpand(menu) : navigate(menu)">
+            <i class="{{ menu.icon }}" style="padding-right: 2vh;"></i>
+            <!-- Clique no label expande o submenu ou navega, dependendo se há submenus -->
+            <ion-label>{{ menu.title }}</ion-label>
+            
+            <!-- Ícone de expansão  caso tenha submenus -->
+            <ion-icon 
+              [name]="isExpanded(menu.level) ? 'chevron-down-outline' : 'chevron-forward-outline'" 
+              slot="end" 
+              *ngIf="hasSubmenus(menu)">
+            </ion-icon>
+          </ion-item>
+
+          <!-- Submenus expandidos -->
+          <ion-list style="flex-direction: column;" *ngFor="let submenu of loadedSubmenus[menu.level]">
+            <ion-item  lines="none" routerDirection="root" (click)="submenu.tem_submenus===1 ? toggleExpand(submenu) : navigate(submenu)">
+              <ion-label style="padding-left: 4vh; padding-right: 2vh;">{{ submenu.title }}</ion-label>
+              <ion-icon 
+                [name]="isExpanded(submenu.level) ? 'chevron-down-outline' : 'chevron-forward-outline'" 
+                slot="end" 
+                *ngIf="hasSubmenus(submenu)">
+              </ion-icon>
+            </ion-item>
+
+            <!-- submenu2 expandidos -->
+            <ion-list style="flex-direction: column;" *ngFor="let submenu2 of loadedSubmenus[submenu.level]">
+              <ion-item  lines="none" routerDirection="root" (click)="submenu2.tem_submenus===1 ? toggleExpand(submenu2) : navigate(submenu2)">
+                <ion-label style="padding-left: 6vh; padding-right: 2vh;">{{ submenu2.title }}</ion-label>
+                <ion-icon 
+                  [name]="isExpanded(submenu2.level) ? 'chevron-down-outline' : 'chevron-forward-outline'" 
+                  slot="end" 
+                  *ngIf="hasSubmenus(submenu2)">
+                </ion-icon>
+              </ion-item>
+                <!-- submenu3 expandidos -->
+                <ion-list style="flex-direction: column;" *ngFor="let submenu3 of loadedSubmenus[submenu2.level]">
+                  <ion-item  lines="none" routerDirection="root" (click)="submenu3.tem_submenus===1 ? toggleExpand(submenu3) : navigate(submenu3)">
+                    <ion-label style="padding-left: 8vh; padding-right: 2vh;">{{ submenu3.title }}</ion-label>
+                    <ion-icon 
+                      [name]="isExpanded(submenu3.level) ? 'chevron-down-outline' : 'chevron-forward-outline'" 
+                      slot="end" 
+                      *ngIf="hasSubmenus(submenu3)">
+                    </ion-icon>
+                  </ion-item>
+
+                  <!-- submenu4 expandidos -->
+                  <ion-list style="flex-direction: column;" *ngFor="let submenu4 of loadedSubmenus[submenu3.level]">
+                    <ion-item  lines="none" routerDirection="root" (click)="submenu4.tem_submenus===1 ? toggleExpand(submenu4) : navigate(submenu4)">
+                      <ion-label style="padding-left: 8vh; padding-right: 2vh;">{{ submenu4.title }}</ion-label>
+                      <ion-icon 
+                        [name]="isExpanded(submenu4.level) ? 'chevron-down-outline' : 'chevron-forward-outline'" 
+                        slot="end" 
+                        *ngIf="hasSubmenus(submenu4)">
+                      </ion-icon>
+                    </ion-item>
+                  </ion-list>
+                </ion-list>
+            </ion-list>
+          </ion-list>
+        </ion-list>
+        <!-- <ion-list id="labels-list">
+          <ion-list-header>Labels</ion-list-header>
+          <ion-item *ngFor="let label of labels" lines="none">
+            <ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>{{ label }}</ion-label>
+          </ion-item>
+        </ion-list> -->
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content" ></ion-router-outlet>
+  </ion-split-pane>
+  
+</ion-app>

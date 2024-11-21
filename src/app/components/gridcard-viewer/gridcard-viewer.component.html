@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar></ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="stretch-card">
+    <ion-card-header>
+      <ion-card-title style="text-align: center; font-size: x-large;">{{ cardTitle }}</ion-card-title>
+      <ion-card style="background-color: #8c8c8c13; margin-right: 1rem;">
+        <ion-row class="ion-align-items-center ion-justify-content-between" style="background: none; border-color: transparent;">
+          <!-- <ion-input placeholder="Pesquisar..." [(ngModel)]="searchText" style="background: none; font-size: medium;"></ion-input> -->
+          <ion-input placeholder="Pesquisar..." [(ngModel)]="searchText" (ngModelChange)="search()" style="background: none; font-size: medium;"></ion-input>
+
+          <ion-button (click)="search()">
+            <ion-icon name="search-outline" style="color: black;"></ion-icon>
+          </ion-button>
+        </ion-row>
+      </ion-card>
+    </ion-card-header>
+      <ion-card-content class="scrollable-table-container">
+        <div *ngFor="let groupText of getUniqueGroups()" class="gridview">
+          <!-- ion-grid com a lógica de exibição dos dados paginados -->
+          <ion-grid>
+            <div class="headerRow">
+              <!-- Cabeçalho dinâmico -->
+              <ion-row class="ion-align-items-center ion-justify-content-between">
+                <ion-col *ngFor="let key of getKeys()" [class.hidden]="isColumnHidden(key)" class="header-columns" (click)="sortData(key)">
+                  {{ key }}
+                  <!-- Exibe o ícone de ordenação -->
+                  <ion-icon *ngIf="sortColumn === key" [name]="sortDirection === 'ASC' ? 'arrow-up' : 'arrow-down'"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </div>
+            <br>
+            <!-- Linhas dinâmicas paginadas -->
+            <ion-row *ngFor="let element of pagedData" (click)="selectRow(element)" class="ion-align-items-center ion-justify-content-between">
+              <ion-col *ngFor="let key of getKeys()" [class.hidden]="isColumnHidden(key)" class="data-columns">
+                {{ element[key] || '-' }}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-card-content>
+    
+    <!-- Linha de navegação da paginação -->
+    <ion-row class="ion-align-items-center ion-justify-content-between" style="padding: 0.2rem; margin: 1rem 1.5rem;">
+      <!-- Botão de Anterior -->
+      <ion-button (click)="previousPage()" [disabled]="currentPage === 1" fill="clear">
+        << <!-- Pode usar o ícone ion-icon se preferir -->
+      </ion-button>
+
+      <!-- Informação de registros -->
+      <span >
+        Registros: {{ startRecord }} a {{ endRecord }} de {{ filteredData.length }}
+      </span>
+
+      <!-- Botão de Próximo -->
+      <ion-button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= filteredData.length" fill="clear">
+        >> <!-- Pode usar o ícone ion-icon se preferir -->
+      </ion-button>
+
+      <!-- Botão de Novo (lado direito) -->
+      <ion-button color="primary" (click)="addNew()" style="margin-left: auto;">
+        Novo
+      </ion-button>
+    </ion-row>
+  </ion-card>
+</ion-content>

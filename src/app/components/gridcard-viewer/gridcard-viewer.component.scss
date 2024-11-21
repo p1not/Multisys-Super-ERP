@@ -1,0 +1,89 @@
+// ion-menu-button {
+//   color: var(--ion-color-primary);
+// }
+
+.hidden {
+  display: none !important;
+}
+
+.header-columns{
+  font-weight: bold;
+  text-transform: capitalize; // Converte as primeiras letras em maiúsculas
+  white-space: nowrap; /* Impede que o texto quebre em múltiplas linhas */
+  font-size: medium;
+}
+
+.data-columns {
+  max-width: calc(100vw); /* Limita a largura de cada coluna à largura do dispositivo menos 2 rem */
+  white-space: nowrap; /* Impede quebra de linha */
+  overflow: hidden; /* Oculta o texto que ultrapassar o limite */
+  text-overflow: ellipsis; /* Adiciona os três pontos (...) quando o texto for muito longo */
+}
+
+.scrollable-table-container {
+  width: 100%;
+  overflow-x: auto; /* Permite rolar horizontalmente apenas a grid */
+  display: block;
+  white-space: nowrap; /* Mantém as colunas na mesma linha */
+  align-items: center;
+  // max-height: 60vh; /* Limita a altura da grid ao tamanho da tela */
+  max-height: calc(var(--windowHeight) - 45vh);
+  overflow-y: auto; /* Permite rolagem vertical se o conteúdo ultrapassar a altura */
+  // justify-content: center; /* Centraliza o conteúdo horizontalmente dentro da gridview */
+  margin-top: auto; /* Move o botão para o final */
+  margin-right: 1rem;
+}
+
+ion-grid {
+  padding-right: 0.5rem;
+}
+
+ion-button::part(native) {
+  border-radius: 2rem !important;
+  max-height: 2rem;
+}
+
+
+ion-row {
+  display: flex;
+  flex-wrap: nowrap; /* Garante que as colunas não quebrem linha */
+  cursor: pointer;
+}
+
+ion-icon {
+  margin-left: 5px;
+  font-size: 1rem;
+  color: var(--ion-color-primary);
+}
+
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+// ion-menu-button {
+//   display: block; /* Certifique-se de que o botão esteja sempre visível */
+//   color: var(--ion-color-primary); /* Cor primária para o ícone */
+// }
+
+

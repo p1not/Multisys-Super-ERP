@@ -1,0 +1,224 @@
+ion-app {
+  ion-header {
+    --background: #ffeb3b;
+    color: #000000;
+  }
+  ion-toolbar {
+    --background:  #ffeb3b; //1f3500 #8DC63F
+    color: #000000;
+  }
+  ion-menu-button {
+    color: #000000;
+  }
+  ion-title {
+    color: #000000;
+  }
+  ion-icon {
+    color: #000000;
+  }
+}
+
+.submenu-list {
+  padding-left: 20px; /* Indentação para diferenciar o submenu */
+  display: none; /* Escondido por padrão */
+  flex-direction: column; /* Força alinhamento vertical */
+  width: 100%; /* O submenu ocupa a largura total */
+}
+
+/* Quando o submenu é expandido */
+.submenu-list.expanded {
+  display: block; /* Expande o submenu verticalmente */
+}
+
+ion-list {
+  padding: 0;
+  width: 100%; /* Garante que o ion-list ocupe toda a largura disponível */
+}
+
+/* Quando o submenu é expandido */
+ion-list.submenu-list {
+  display: block; /* Expande o submenu verticalmente */
+}
+
+ion-grid {
+  width: 100%; /* Garante que o grid ocupe toda a largura do container */
+}
+
+ion-row {
+  display: flex;
+  flex-wrap: nowrap; /* Garante que as colunas não quebrem linha */
+}
+
+ion-item {
+  width: 100%; /* Garante que o ion-item ocupe toda a largura do pai */
+  cursor: pointer;
+}
+
+ion-item.selected {
+  --color: var(--ion-color-primary);
+}
+
+.search-input {
+  text-align: left; /* Alinhamento padrão para desktops */
+
+  @media (max-width: 767px) {
+    text-align: center; /* Alinhamento centralizado para dispositivos móveis */
+  }
+}
+
+#main-content {
+  padding: 16px;
+}
+
+@media (max-width: 767px) {
+  ion-menu {
+    width: 65%;
+  }
+}
+
+@media (min-width: 768px) {
+  ion-menu {
+    width: auto; /* Permitir que o menu se ajuste ao conteúdo em telas maiores */
+  }
+}
+
+ion-menu ion-content {
+  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+}
+
+ion-menu {
+  width: auto; /* Permitir que o menu cresça conforme o conteúdo */
+  min-width: 250px; /* Largura mínima para o menu */
+  max-width: 100%; /* Limite a largura máxima para não ocupar toda a tela */
+  white-space: nowrap; /* Impedir quebra de texto */
+  overflow-x: hidden; /* Evitar barras de rolagem horizontais */
+}
+
+.header-columns{
+  font-weight: bold;
+}
+
+
+ion-label {
+  white-space: nowrap; /* Impedir quebra de texto no ion-label */
+  // overflow: hidden;
+  text-overflow: ellipsis; /* Adiciona "..." caso o texto seja muito longo */
+}
+
+ion-menu.md ion-content {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
+
+ion-menu.md ion-list {
+  padding: 3px 0;
+}
+
+ion-menu.md ion-note {
+  margin-bottom: 25px;
+}
+
+ion-menu.md ion-list-header,
+ion-menu.md ion-note {
+  padding-left: 10px;
+}
+
+ion-menu.md ion-list#inbox-list {
+  border-bottom: 1px solid var(--ion-background-color-step-150, #d7d8da);
+}
+
+ion-menu.md ion-list#head-menu-list ion-list-header {
+  font-size: 22px;
+  font-weight: 600;
+
+  min-height: 20px;
+}
+ion-menu.md ion-list#head-menu-list {
+  border-bottom: 1px solid var(--ion-background-color-step-150, #d7d8da);
+}
+
+
+
+ion-menu.md ion-list#labels-list ion-list-header {
+  font-size: 16px;
+
+  margin-bottom: 5px;
+
+  color: #757575;
+
+  min-height: 26px;
+}
+
+ion-menu.md ion-item {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  border-radius: 4px;
+}
+
+ion-menu.md ion-item.selected {
+  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+}
+
+ion-menu.md ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-menu.md ion-item ion-icon {
+  color: #616e7e;
+}
+
+ion-menu.md ion-item ion-label {
+  font-weight: 500;
+}
+
+ion-menu.ios ion-content {
+  --padding-bottom: 20px;
+}
+
+ion-menu.ios ion-list {
+  padding: 20px 0 0 0;
+}
+
+ion-menu.ios ion-note {
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+ion-menu.ios ion-item {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --min-height: 50px;
+}
+
+ion-menu.ios ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-menu.ios ion-item ion-icon {
+  font-size: 24px;
+  color: #73849a;
+}
+
+ion-menu.ios ion-list#labels-list ion-list-header {
+  margin-bottom: 8px;
+}
+
+ion-menu.ios ion-list-header,
+ion-menu.ios ion-note {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+ion-menu.ios ion-note {
+  margin-bottom: 8px;
+}
+
+ion-note {
+  display: inline-block;
+  font-size: 16px;
+
+  color: var(--ion-color-medium-shade);
+}
+
