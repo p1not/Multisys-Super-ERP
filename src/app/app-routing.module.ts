@@ -4,6 +4,7 @@ import { GridcardViewerComponent } from './components/gridcard-viewer/gridcard-v
 import { ErrorPage } from './pages/error/error.page';
 import { FormViewerComponent } from './components/form-viewer/form-viewer.component';
 import { HomePage } from './pages/home/home.page';
+// import { LoginPage } from './pages/login/login.page';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -56,7 +57,13 @@ const routes: Routes = [
   // { path: 'configurations/administrators/menus/:id', component: FormViewerComponent },
   { path: 'form-viewer', component: FormViewerComponent, data: { } },
   { path: 'error', component: ErrorPage },    
-  { path: '**', component: HomePage }
+  // { path: 'login', component: LoginPage },
+  // {
+  //   path: 'login',
+  //   loadChildren: () => import('./pages/login/login.page').then(m => m.LoginPage) // lazy loading
+  // },
+  
+  { path: '**', component: HomePage } //deixar sempre por último, caso não encontre nenhuma rota válida
 ];
 
 @NgModule({

@@ -12,3 +12,28 @@
 ion-card {
   place-items: center;
 }
+
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.image-container img {
+  width: 200px;
+  height: 70px;
+  object-fit: contain; /* Mantém a proporção das imagens */
+  border-radius: 5px; /* Opcional: bordas arredondadas */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Opcional: sombra nas imagens */
+}
+
+/* Ajuste para dispositivos móveis */
+@media (max-width: 768px) {
+  .image-container img {
+    width: 138px;  /* Reduzindo para 50% */
+    height: 48px;  /* Reduzindo para 50% */
+  }
+}

@@ -1,8 +1,9 @@
 {
     "/api": {
-    "target": "https://multisys-super-erp-api.onrender.com/",
+    "target": "https://localhost:7290",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
     }
 }
+  

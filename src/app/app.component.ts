@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
       "level": level
     };
 
-    this.http.post<any[]>(`/api/core/generic/call/${this.menuFunction}`, reqbody,
+    this.http.post<any[]>(`/api/core/generic/call/${this.menuFunction}`, JSON.stringify(reqbody), //reqbody,
     { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
     ).subscribe(response => {
       if (level === 'base') {
