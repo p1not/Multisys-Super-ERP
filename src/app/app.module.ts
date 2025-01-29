@@ -17,7 +17,7 @@ import { FormViewerComponent } from './components/form-viewer/form-viewer.compon
 // 2.2 Pages
 import { ErrorPage } from './pages/error/error.page';
 import { HomePage } from './pages/home/home.page';
-// import { LoginPage } from './pages/login/login.page';
+import { LoginPage } from './pages/login/login.page';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { HomePage } from './pages/home/home.page';
     FormViewerComponent,
     ErrorPage,
     HomePage,
-    // LoginPage
+    LoginPage
   ],
   imports: [
     BrowserModule, 
@@ -34,7 +34,7 @@ import { HomePage } from './pages/home/home.page';
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, 
